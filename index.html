@@ -1,0 +1,46 @@
+<!-- landingPage.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Will You Go Out With Me?</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="container">
+      <h1>Hi there! 👋</h1>
+      <p>Whether it’s a fun hangout or a sweet little date, I’d love to spend time with you. Let’s plan something memorable together 🌸</p>
+      <form id="inviteForm">
+        <input type="email" id="inviterEmail" placeholder="Your Email" required>
+        <select id="type" required>
+          <option value="hangout">Friendly Hangout</option>
+          <option value="date">Romantic Date</option>
+        </select>
+        <input type="text" id="date" placeholder="Date (e.g. April 20, 2025)" required>
+        <input type="text" id="time" placeholder="Time (e.g. 6:00 PM)" required>
+        <input type="text" id="place" placeholder="Place (e.g. Café Luna)" required>
+        <textarea id="todo" placeholder="Plans or activities..." required></textarea>
+        <button type="submit">Let’s Make It Happen 💌</button>
+      </form>
+    </div>
+  <script>
+    emailjs.init("Ou0iyeUQPLQjw5JVW");
+
+    document.getElementById("inviteForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById("inviterEmail").value;
+      const type = document.getElementById("type").value;
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
+      const place = document.getElementById("place").value;
+      const todo = document.getElementById("todo").value;
+
+      const queryString = `?email=${encodeURIComponent(email)}&type=${encodeURIComponent(type)}&date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}&place=${encodeURIComponent(place)}&todo=${encodeURIComponent(todo)}`;
+
+      window.location.href = `homePage.html${queryString}`;
+    });
+  </script>
+</body>
+</html>

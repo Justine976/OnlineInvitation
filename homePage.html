@@ -1,0 +1,27 @@
+<!-- homePage.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Send Your Sweet Invitation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Share This Lovely Link 💕</h1>
+    <p>Copy and send this to your special someone ✨</p>
+    <input type="text" id="invitationLink" readonly>
+    <button onclick="copyLink()">Copy Link 📋</button>
+  </div>
+  <script>
+    const url = new URL("invitationPage.html" + window.location.search, window.location.origin);
+    document.getElementById("invitationLink").value = url.href;
+
+    function copyLink() {
+      navigator.clipboard.writeText(url.href).then(() => {
+        alert("Link copied! Now Share the Plan 🌟");
+      });
+    }
+  </script>
+</body>
+</html>

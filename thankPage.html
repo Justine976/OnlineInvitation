@@ -1,0 +1,37 @@
+<!-- thankPage.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thank You 💘</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Thank You 💌</h1>
+    <p>Your response has been sent. Hope love is in the air! 💕</p>
+  </div>
+  <script>
+    emailjs.init("Ou0iyeUQPLQjw5JVW");
+    const params = new URLSearchParams(window.location.search);
+    const email = params.get("email");
+    const answer = params.get("answer");
+    const note = params.get("note");
+    const name = params.get("name");
+    const type = params.get("type");
+
+    const templateParams = {
+        to_email: email,
+        response: "Answer: " + answer,
+        note: "Note: " + note,
+        name: name,
+        type: type
+    };
+
+    emailjs.send("service_vcf0oli", "template_atk5zpe", templateParams)
+      .then(() => console.log("Email sent"))
+      .catch((error) => console.error("Email error:", error));
+  </script>
+</body>
+</html>
