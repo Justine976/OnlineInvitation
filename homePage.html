@@ -14,7 +14,7 @@
     <button onclick="copyLink()">Copy Link 📋</button>
   </div>
   <script>
-    const url = new URL("invitationPage.html" + window.location.search, window.location.origin);
+    const url = new URL("OnlineInvitation/invitationPage.html" + window.location.search, window.location.origin);
     document.getElementById("invitationLink").value = url.href;
 
     function copyLink() {
