@@ -1,47 +1,130 @@
-<!-- landingPage.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Will You Go Out With Me?</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <meta name="description" content="Create and share beautiful RSVP invitations — no account needed.">
+  <title>RSVP — Create an Invitation</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💌</text></svg>">
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
-    <div class="container">
-      <h1>Hi there! 👋</h1>
-      <p>Whether it’s a fun hangout or a sweet little date, I’d love to spend time with you. Let’s plan something memorable together 🌸</p>
-      <form id="inviteForm">
-        <input type="email" id="inviterEmail" placeholder="Your Email" required>
-        <select id="type" required>
-          <option value="hangout">Friendly Hangout</option>
-          <option value="date">Romantic Date</option>
-        </select>
-        <input type="text" id="date" placeholder="Date (e.g. April 20, 2025)" required>
-        <input type="text" id="time" placeholder="Time (e.g. 6:00 PM)" required>
-        <input type="text" id="place" placeholder="Place (e.g. Café Luna)" required>
-        <textarea id="todo" placeholder="Plans or activities..." required></textarea>
-        <button type="submit">Let’s Make It Happen 💌</button>
+<body class="theme-blush">
+  <main class="page-shell builder-shell">
+    <section class="panel form-panel" aria-labelledby="builderTitle">
+      <p class="eyebrow">Builder</p>
+      <h1 id="builderTitle">Plan something worth saying yes to</h1>
+      <p class="lede">A warm invite for a date, a coffee, or a good excuse to spend time together.</p>
+
+      <form id="inviteForm" class="stack">
+        <div class="field">
+          <label for="inviterEmail">Your email</label>
+          <input type="email" id="inviterEmail" autocomplete="email" placeholder="you@example.com" required>
+        </div>
+
+        <div class="field">
+          <label for="title">Invite title</label>
+          <input type="text" id="title" maxlength="80" value="Coffee and a little adventure" required>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="type">Invite type</label>
+            <select id="type" required>
+              <option value="hangout">Friendly hangout</option>
+              <option value="date">Date</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="theme">Theme</label>
+            <select id="theme" required>
+              <option value="blush">Blush</option>
+              <option value="sunrise">Sunrise</option>
+              <option value="garden">Garden</option>
+              <option value="midnight">Midnight</option>
+              <option value="flirt">Flirt</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="date">Date</label>
+            <input type="date" id="date" required>
+          </div>
+
+          <div class="field">
+            <label for="time">Time</label>
+            <input type="time" id="time" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="place">Place</label>
+          <input type="text" id="place" maxlength="120" placeholder="Cafe Luna" required>
+        </div>
+
+        <div class="field">
+          <label for="message">Personal message</label>
+          <textarea id="message" maxlength="240" placeholder="I picked this because it made me think of you." required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="todo">Itinerary</label>
+          <textarea id="todo" maxlength="280" placeholder="Coffee first, then a walk somewhere pretty." required></textarea>
+        </div>
+
+        <div class="action-row">
+          <button class="primary-action" type="submit" id="createButton">Create share link</button>
+          <button class="secondary-button" type="button" id="savePlanButton">Save Plan</button>
+        </div>
+        <p class="status-message" id="createStatus" aria-live="polite"></p>
       </form>
+    </section>
+
+    <aside class="invite-card theme-card theme-blush preview-card" id="previewCard" aria-labelledby="previewHeading">
+      <p class="eyebrow">Live Preview</p>
+      <h2 id="previewHeading"></h2>
+      <p class="preview-message" id="previewMessage"></p>
+
+      <dl class="detail-list">
+        <div>
+          <dt>Type</dt>
+          <dd id="previewType"></dd>
+        </div>
+        <div>
+          <dt>Date</dt>
+          <dd id="previewDate"></dd>
+        </div>
+        <div>
+          <dt>Time</dt>
+          <dd id="previewTime"></dd>
+        </div>
+        <div>
+          <dt>Place</dt>
+          <dd id="previewPlace"></dd>
+        </div>
+        <div>
+          <dt>Itinerary</dt>
+          <dd id="previewTodo"></dd>
+        </div>
+      </dl>
+    </aside>
+  </main>
+
+  <div class="load-plan-panel" id="loadPlanPanel" aria-labelledby="loadPlanTitle">
+    <p class="eyebrow">Saved Plans</p>
+    <p class="load-plan-lede">Load a previously saved plan or try one of our pre-built templates.</p>
+    <select id="savedPlanSelect" size="4">
+      <option value="" disabled>No saved plans</option>
+    </select>
+    <div class="action-row">
+      <button class="secondary-button" type="button" id="loadPlanButton" disabled>Load selected plan</button>
+      <button class="secondary-button danger" type="button" id="deletePlanButton" disabled>Discard selected</button>
     </div>
-  <script>
-    emailjs.init("Ou0iyeUQPLQjw5JVW");
+    <p class="status-message" id="loadPlanStatus" aria-live="polite"></p>
+  </div>
 
-    document.getElementById("inviteForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      const email = document.getElementById("inviterEmail").value;
-      const type = document.getElementById("type").value;
-      const date = document.getElementById("date").value;
-      const time = document.getElementById("time").value;
-      const place = document.getElementById("place").value;
-      const todo = document.getElementById("todo").value;
-
-      const queryString = `?email=${encodeURIComponent(email)}&type=${encodeURIComponent(type)}&date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}&place=${encodeURIComponent(place)}&todo=${encodeURIComponent(todo)}`;
-
-      window.location.href = `homePage.html${queryString}`;
-    });
-  </script>
+  <script src="assets/js/app.js?v=2"></script>
 </body>
 </html>

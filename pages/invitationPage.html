@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View your invitation and RSVP.">
+  <title>View Invitation</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💌</text></svg>">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <main class="page-shell invitation-shell">
+    <section class="invite-card preview-card theme-card theme-blush" id="inviteCard" aria-labelledby="inviteTitle">
+      <p class="eyebrow" id="inviteType"></p>
+      <h1 id="inviteTitle"></h1>
+      <p class="preview-message" id="inviteMessage"></p>
+
+      <dl class="detail-list">
+        <div>
+          <dt>Date</dt>
+          <dd id="inviteDate"></dd>
+        </div>
+        <div>
+          <dt>Time</dt>
+          <dd id="inviteTime"></dd>
+        </div>
+        <div>
+          <dt>Place</dt>
+          <dd id="invitePlace"></dd>
+        </div>
+        <div>
+          <dt>Itinerary</dt>
+          <dd id="inviteTodo"></dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="panel response-panel" aria-labelledby="responseTitle">
+      <p class="eyebrow">RSVP</p>
+      <h2 id="responseTitle">Send your response</h2>
+
+      <form id="responseForm" class="stack">
+        <div class="field">
+          <label for="inviteeName">Your name</label>
+          <input type="text" id="inviteeName" maxlength="80" autocomplete="name" required>
+        </div>
+
+        <div class="field">
+          <label for="note">Message back</label>
+          <textarea id="note" maxlength="240" placeholder="A short note is perfect." required></textarea>
+        </div>
+
+        <div class="answer-row">
+          <button class="primary-action" type="submit" name="answer" value="yes">Yes, I would love to</button>
+          <button class="secondary-button" type="submit" name="answer" value="no">Maybe next time</button>
+        </div>
+
+        <p class="status-message" id="responseStatus" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="../assets/js/app.js?v=2"></script>
+</body>
+</html>

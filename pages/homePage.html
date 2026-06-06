@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Copy your invitation link to share with someone special.">
+  <title>Share Your Invitation</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💌</text></svg>">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <main class="page-shell single-shell">
+    <section class="panel share-panel" aria-labelledby="shareTitle">
+      <p class="eyebrow">Share</p>
+      <h1 id="shareTitle">Your invite link is ready</h1>
+      <p class="lede" id="shareSummary"></p>
+
+      <div class="field">
+        <label for="invitationLink">Invitation link</label>
+        <input type="text" id="invitationLink" readonly>
+      </div>
+
+      <div class="action-row">
+        <button class="primary-action" type="button" id="copyButton">Copy link</button>
+        <a class="secondary-action" id="openInvite" href="invitationPage.html">Open invite</a>
+      </div>
+
+      <p class="status-message" id="copyStatus" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <script src="../assets/js/app.js?v=2"></script>
+</body>
+</html>
