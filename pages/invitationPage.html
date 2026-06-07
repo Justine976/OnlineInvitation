@@ -9,6 +9,14 @@
   <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
+  <div class="romance-layer" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
   <main class="page-shell invitation-shell">
     <section class="invite-card preview-card theme-card theme-blush" id="inviteCard" aria-labelledby="inviteTitle">
       <p class="eyebrow" id="inviteType"></p>
@@ -17,12 +25,20 @@
 
       <dl class="detail-list">
         <div>
+          <dt>Type of Date</dt>
+          <dd id="inviteTypeDetail"></dd>
+        </div>
+        <div>
           <dt>Date</dt>
           <dd id="inviteDate"></dd>
         </div>
         <div>
           <dt>Time</dt>
           <dd id="inviteTime"></dd>
+        </div>
+        <div>
+          <dt>To</dt>
+          <dd id="inviteInvitee"></dd>
         </div>
         <div>
           <dt>Place</dt>
@@ -41,11 +57,6 @@
 
       <form id="responseForm" class="stack">
         <div class="field">
-          <label for="inviteeName">Your name</label>
-          <input type="text" id="inviteeName" maxlength="80" autocomplete="name" required>
-        </div>
-
-        <div class="field">
           <label for="note">Message back</label>
           <textarea id="note" maxlength="240" placeholder="A short note is perfect." required></textarea>
         </div>
@@ -60,6 +71,6 @@
     </section>
   </main>
 
-  <script src="../assets/js/app.js?v=2"></script>
+  <script src="../assets/js/app.js?v=4"></script>
 </body>
 </html>

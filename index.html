@@ -9,6 +9,14 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body class="theme-blush">
+  <div class="romance-layer" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
   <main class="page-shell builder-shell">
     <section class="panel form-panel" aria-labelledby="builderTitle">
       <p class="eyebrow">Builder</p>
@@ -22,16 +30,54 @@
         </div>
 
         <div class="field">
+          <label for="inviteeName">Who to invite</label>
+          <input type="text" id="inviteeName" maxlength="80" placeholder="Their name" required>
+        </div>
+
+        <div class="field">
           <label for="title">Invite title</label>
           <input type="text" id="title" maxlength="80" value="Coffee and a little adventure" required>
         </div>
 
         <div class="field-row">
           <div class="field">
-            <label for="type">Invite type</label>
+            <label for="type">Type of date</label>
             <select id="type" required>
-              <option value="hangout">Friendly hangout</option>
-              <option value="date">Date</option>
+              <optgroup label="💕 Romantic Dates">
+                <option value="coffee-date">Coffee & Conversation</option>
+                <option value="dinner-date">Candlelit Dinner</option>
+                <option value="sunset-drinks">Sunset Drinks</option>
+                <option value="stargazing">Stargazing & Dessert</option>
+                <option value="wine-tasting">Wine Tasting</option>
+                <option value="cooking-together">Cooking Together</option>
+              </optgroup>
+              <optgroup label="🎨 Creative & Fun">
+                <option value="museum-date">Museum & Gallery</option>
+                <option value="art-class">Paint & Sip Class</option>
+                <option value="pottery-date">Pottery Workshop</option>
+                <option value="comedy-show">Comedy Club</option>
+                <option value="live-music">Live Music / Jazz</option>
+                <option value="dance-class">Dance Lesson</option>
+              </optgroup>
+              <optgroup label="🌿 Outdoor & Adventure">
+                <option value="picnic-date">Park Picnic</option>
+                <option value="hiking-date">Scenic Hike</option>
+                <option value="beach-walk">Beach Sunset Walk</option>
+                <option value="botanical-garden">Botanical Garden</option>
+                <option value="bike-ride">Bike Ride & Brunch</option>
+                <option value="kayaking">Kayaking / Paddleboard</option>
+              </optgroup>
+              <optgroup label="☕ Casual & Cozy">
+                <option value="brunch-date">Weekend Brunch</option>
+                <option value="bookstore-date">Bookstore Browse</option>
+                <option value="farmers-market">Farmers Market</option>
+                <option value="ice-cream">Ice Cream Stroll</option>
+                <option value="board-games">Board Game Cafe</option>
+                <option value="movie-night">Movie & Dinner</option>
+              </optgroup>
+              <optgroup label="🤝 Friendly Hangout">
+                <option value="hangout">Friendly Hangout</option>
+              </optgroup>
             </select>
           </div>
 
@@ -47,15 +93,20 @@
           </div>
         </div>
 
-        <div class="field-row">
+        <div class="field-row field-row-3">
           <div class="field">
             <label for="date">Date</label>
             <input type="date" id="date" required>
           </div>
 
           <div class="field">
-            <label for="time">Time</label>
-            <input type="time" id="time" required>
+            <label for="timeStart">Start time</label>
+            <input type="time" id="timeStart" required>
+          </div>
+
+          <div class="field">
+            <label for="timeEnd">End time</label>
+            <input type="time" id="timeEnd">
           </div>
         </div>
 
@@ -89,8 +140,8 @@
 
       <dl class="detail-list">
         <div>
-          <dt>Type</dt>
-          <dd id="previewType"></dd>
+          <dt>Type of Date</dt>
+          <dd id="previewTypeDetail"></dd>
         </div>
         <div>
           <dt>Date</dt>
@@ -99,6 +150,10 @@
         <div>
           <dt>Time</dt>
           <dd id="previewTime"></dd>
+        </div>
+        <div>
+          <dt>To</dt>
+          <dd id="previewInvitee"></dd>
         </div>
         <div>
           <dt>Place</dt>
@@ -110,21 +165,22 @@
         </div>
       </dl>
     </aside>
+
+    <section class="load-plan-panel" id="loadPlanPanel" aria-labelledby="loadPlanTitle">
+      <p class="eyebrow">Saved Plans</p>
+      <h2 id="loadPlanTitle">Pick up where you left off</h2>
+      <p class="load-plan-lede">Load a previously saved plan or try one of our pre-built templates.</p>
+      <select id="savedPlanSelect" size="4">
+        <option value="" disabled>No saved plans</option>
+      </select>
+      <div class="action-row">
+        <button class="secondary-button" type="button" id="loadPlanButton" disabled>Load selected plan</button>
+        <button class="secondary-button danger" type="button" id="deletePlanButton" disabled>Discard selected</button>
+      </div>
+      <p class="status-message" id="loadPlanStatus" aria-live="polite"></p>
+    </section>
   </main>
 
-  <div class="load-plan-panel" id="loadPlanPanel" aria-labelledby="loadPlanTitle">
-    <p class="eyebrow">Saved Plans</p>
-    <p class="load-plan-lede">Load a previously saved plan or try one of our pre-built templates.</p>
-    <select id="savedPlanSelect" size="4">
-      <option value="" disabled>No saved plans</option>
-    </select>
-    <div class="action-row">
-      <button class="secondary-button" type="button" id="loadPlanButton" disabled>Load selected plan</button>
-      <button class="secondary-button danger" type="button" id="deletePlanButton" disabled>Discard selected</button>
-    </div>
-    <p class="status-message" id="loadPlanStatus" aria-live="polite"></p>
-  </div>
-
-  <script src="assets/js/app.js?v=2"></script>
+  <script src="assets/js/app.js?v=4"></script>
 </body>
 </html>
