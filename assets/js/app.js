@@ -650,8 +650,8 @@ function setStatusMessage(id, message, tone) {
       }
 
       if (hasRsvp) {
-        // Invitation has already been responded to — self-destruct
-        window.location.replace('about:blank');
+        // Invitation has already been responded to — close the page
+        window.location.replace('close.html');
         return;
       }
 
@@ -921,7 +921,7 @@ function setStatusMessage(id, message, tone) {
       closeTimer--;
       if (closeTimer <= 0) {
         clearInterval(interval);
-        window.location.replace('about:blank');
+        window.location.replace('close.html');
       } else {
         updateCloseMessage();
       }
