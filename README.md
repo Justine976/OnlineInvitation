@@ -2,7 +2,7 @@
 
 A fully static RSVP invitation builder that runs entirely in the browser.  
 Built with vanilla HTML, CSS, and JavaScript — no backend required.
-```vibe coded```
+```vibe coded hehehe```
 ## Live Demo
 
 Once deployed to GitHub Pages, visit:
